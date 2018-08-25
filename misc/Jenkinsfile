@@ -2,7 +2,7 @@ node {
    def git_commit_id
    stage('Prepare') {
      scm {
-        git('git://github.com/grv231/docker-demo.git') {  node -> // is hudson.plugins.git.GitSCM
+        git('git://github.com/grv231/Jenkins-Docker-demo.git') {  node -> // is hudson.plugins.git.GitSCM
             node / gitConfigName('TestUser')
             node / gitConfigEmail('Test@test.com')
         }

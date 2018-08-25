@@ -1,11 +1,7 @@
 node {
    def git_commit_id
    stage('Prepare') {
-     scm {
-        git('git://github.com/grv231/Jenkins-Docker-demo.git') {  node -> // is hudson.plugins.git.GitSCM
-            node / gitConfigName('TestUser')
-            node / gitConfigEmail('Test@test.com')
-        }
+     checkout scm
      sh "git rev-parse --short HEAD > .git/commit-id"
      git_commit_id = readFile('.git/commit-id').trim()
    }

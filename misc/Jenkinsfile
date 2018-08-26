@@ -8,10 +8,11 @@ node {
    
    
    stage('Prepare') {
-     checkout scm
-     triggers {
-        scm('* * * * *')
-     }
+    checkout([$class: 'GitSCM', 
+          branches: [[name: '*/master']], 
+          changelog: true,
+          poll: true
+          )
      sh "git rev-parse --short HEAD > .git/commit-id"
      git_commit_id = readFile('.git/commit-id').trim()
    }

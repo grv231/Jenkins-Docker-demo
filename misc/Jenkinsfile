@@ -31,7 +31,8 @@ node {
           sh 'npm test'                     
      }     
      currentBuild.result = "SUCCESS";
-     sh 'exit 1'
+     #Simulating Failure
+     # sh 'exit 1'
      mysql.stop()
     }  
    } catch (Exception err) {

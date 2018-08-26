@@ -26,7 +26,7 @@ node {
      def mysql = docker.image('mysql').run("-e MYSQL_ALLOW_EMPTY_PASSWORD=yes") 
      def testContainer = docker.image('node:4.6')
      testContainer.pull()
-     testContainer.inside("--link ${mysql.id}:mysql") {
+     testContainer.inside("--link ${mysql.id}:mysql_container") {
           sh 'npm install --only=dev' 
           sh 'npm test'                     
      }     
